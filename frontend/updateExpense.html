@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Expense</title>
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+    <h1>Update Expense</h1>
+
+    <nav>
+        <ul>
+            <li><a href="">Full Expenses Report</a></li>
+            <li><a href="./dashboard">Dashboard</a></li>
+        </ul>
+    </nav>
+    <div class="forms">
+        <h2>Edit Expense</h2>
+        <form name="expenseForm" id="expenseForm">
+            <label for="expenseCategory">Category</label>
+            <select name="expenseCategory" id="expenseCategory" required>
+                <option value=""> -- Please select a Category</option>
+                <option value="Food">Food</option>
+                <option value="Education">Education</option>
+                <option value="Health">Health</option>
+                <option value="Friends">Friends</option>
+                <option value="Retail">Retail</option>
+                <option value="Internet">Internet</option>
+                <option value="Travel">Travel</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="expenseAmount">Amount</label>
+            <input type="number" name="expenseAmount" id="expenseAmount" placeholder="0.00" required>
+
+            <label for="transactionCost">Transaction Cost</label>
+            <input type="number" name="transactionCost" id="transactionCost" placeholder="0.00" required>
+
+            <label for="paymentMethod">Mode of Payment</label>
+            <select name="paymentMethod" id="paymentMethod" required>
+                <option value=""> -- Please select the payment method you used.</option>
+                <option value="Cash">Cash</option>
+                <option value="CreditCard">Credit Card</option>
+                <option value="DebitCard">Debit Card</option>
+                <option value="MobileMoney">Mobile Money</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <button type="submit">Update Expense</button>
+        </form>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+
+            const category = urlParams.get('category');
+            const amount = urlParams.get('amount');
+            const transactionCost = urlParams.get('transactionCost');
+            const paymentMethod = urlParams.get('paymentMethod');
+
+            if (category) {
+                document.getElementById('expenseCategory').value = category;
+            }
+            if (amount) {
+                document.getElementById('expenseAmount').value = amount;
+            }
+            if (transactionCost) {
+                document.getElementById('transactionCost').value = transactionCost;
+            }
+            if (paymentMethod) {
+                document.getElementById('paymentMethod').value = paymentMethod;
+            }
+        });
+
+    </script>
+</body>
+
+</html>

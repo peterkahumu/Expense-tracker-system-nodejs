@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+    <main>
+        <h1>Expense Tracker System</h1>
+
+        <nav>
+            <ul>
+                <li><a href="">Full Expenses Report</a></li>
+            </ul>
+        </nav>
+
+        <div id="sideBySide">
+            <div id="img" class="images">
+                <img src="/images/expense-management.jpeg" alt="Expense Tracker">
+            </div>
+
+            <div class="metrics">
+                <div class="metric">
+                    <h2>Total income</h2>
+                    <span>$ <span id="totalIncome">0.00</span></span><br>
+                </div>
+
+                <div class="metric">
+                    <h2>Total Expenses</h2>
+                    <span>$ <span id="totalExpenses">0.00</span></span><br>
+                </div>
+
+                <div class="metric">
+                    <h2>Available Amount</h2>
+                    <span>$ <span id="availableAmount">0.00</span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="forms">
+            <div id="formsWrapper">
+                <div id="updateIncomeForm" class="formSection">
+                    <h2>Update Your Income</h2>
+                    <form id='incomeForm'>
+                        <label for="newAmount">New Amount</label>
+                        <input type="number" name="newAmount" id="newAmount" placeholder="0.00" required>
+                        <button type="submit">Update Income</button>
+                    </form>
+                </div>
+
+                <div id="expenseForm" class="formSection">
+                    <h2>Add Expense</h2>
+                    <form name="expensesForm" id="expensesForm">
+                        <label for="expenseCategory">Category</label>
+                        <select name="expenseCategory" id="expenseCategory" required>
+                            <option value=""> -- Please select a Category</option>
+                            <option value="Food">Food</option>
+                            <option value="Education">Education</option>
+                            <option value="Health">Health</option>
+                            <option value="Friends">Friends</option>
+                            <option value="Retail">Retail</option>
+                            <option value="Internet">Internet</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Other">Other</option>
+                        </select>
+
+                        <label for="expenseAmount">Amount</label>
+                        <input type="number" name="expenseAmount" id="expenseAmount" placeholder="0.00" required>
+
+                        <label for="transactionCost">Transaction Cost</label>
+                        <input type="number" name="transactionCost" id="transactionCost" placeholder="0.00" required>
+
+                        <label for="paymentMethod">Mode of Payment</label>
+                        <select name="paymentMethod" id="paymentMethod" required>
+                            <option value=""> -- Please select the payment method you used.</option>
+                            <option value="Cash">Cash</option>
+                            <option value="CreditCard">Credit Card</option>
+                            <option value="DebitCard">Debit Card</option>
+                            <option value="MobileMoney">Mobile Money</option>
+                            <option value="Other">Other</option>
+                        </select>
+
+                        <button type="submit">Add Expense</button>
+                    </form>
+                </div>
+            </div>
+
+            <div id="expenseReportTable" class="formSection">
+                <h2>Expense Report</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Expense Category</th>
+                            <th>Amount</th>
+                            <th>Transaction Cost</th>
+                            <th>Mode of Payment</th>
+                            <th>Total Amount</th>
+                            <th>Delete Expense</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- The expenses will be updated dynamically form the backend. -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+    <script>
+        // ensure that the user is logged in
+        const token = localStorage.getItem('token');
+        if (!token) {
+            window.location.href = '/api/users/login';
+        }
+    </script>
+    <script src="/js/app.js"></script>
+</body>
+
+</html>
